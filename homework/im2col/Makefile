@@ -84,16 +84,16 @@ clean:
 		cd ../../helper_lib; make clean
 
 cpu:		m1
-		./m1 1000
+		./m1 100
 
 
 gpu: 		m2
-		./m2 1000
+		./m2 100
 
 time: time_gpu
 
 time_gpu: 		m2
-		python3 ../utils/profile.py  --args ./m2 1000
+		python3 ../utils/profile.py  --args ./m2 100
 
 time_cpu: 	m1
-		python3 ../utils/profile.py  --args ./m1 1000
+		python3 ../utils/profile.py  --args ./m1 100

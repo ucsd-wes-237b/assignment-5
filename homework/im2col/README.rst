@@ -3,7 +3,7 @@ PA8 - GeMM Convolution
 
 Introduction
 ------------
-You will be implementing convolution via matrix multiplication. We will be building on a similar CNN skeleton as the previous assignment. This assignment has the most challenging indexing of all the PAs. We highly recommend that you draft your code in a separate file and test it on small test cases. Some test cases are provided at the bottom of this writeup.
+You will be implementing convolution via matrix multiplication. We will be building on a similar CNN skeleton as the previous assignment. This assignment has the most challenging indexing of all the PAs. We highly recommend that you draft your code in a separate file and test it on small test cases. Some test cases are provided at the bottom of this writeup. Due to the increased memory requirements, we are only using a batch of 100 instead of 1000 for this assignment.  This makes the new desired accuracy :code:`0.86`.
 
 Your Tasks
 -----------
