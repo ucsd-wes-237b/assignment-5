@@ -78,7 +78,10 @@ void OpenCLMatrixMultiply(Matrix *input0, Matrix *input1, Matrix *result)
     //@@ Free the GPU memory here
 
     // Copy back from h_C to result
-    CopyMatrix(result, h_C);
+    for (unsigned int i = 0; i < result->shape[0] * result->shape[1]; ++i)
+    {
+        result->data[i] = (int)h_C[i];
+    }
 
     // Release the malloc'd memory
     free(h_A);
