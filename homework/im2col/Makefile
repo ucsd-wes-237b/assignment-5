@@ -1,7 +1,7 @@
 CC       = g++
 CFLAGS   = -g -Wall
-INCFLAGS := -I../helper_lib -I.
-LDFLAGS  := ../helper_lib/helper_lib.a -lm -lclblast
+INCFLAGS := -I../../helper_lib -I.
+LDFLAGS  := ../../helper_lib/helper_lib.a -lm -lclblast
 
 ifeq ($(shell uname -o), Darwin)
 	LDFLAGS += -framework OpenCL
@@ -14,10 +14,10 @@ endif
 
 all: m2 m1
 
-m2:		../helper_lib/helper_lib.a m2.o ece408net.o src/network.o src/mnist.o layer.sentinel loss.sentinel custom.sentinel
+m2:		../../helper_lib/helper_lib.a m2.o ece408net.o src/network.o src/mnist.o layer.sentinel loss.sentinel custom.sentinel
 		$(CC) $(CFLAGS) src/layer/custom/new-forward.cc m2.o ece408net.o src/network.o src/mnist.o src/layer/*.o src/loss/*.o src/layer/custom/*.o $(INCFLAGS) $(LDFLAGS) -o m2
 
-m1:		../helper_lib/helper_lib.a m1.o ece408net.o src/network.o src/mnist.o layer.sentinel loss.sentinel custom.sentinel
+m1:		../../helper_lib/helper_lib.a m1.o ece408net.o src/network.o src/mnist.o layer.sentinel loss.sentinel custom.sentinel
 		$(CC) $(CFLAGS) src/layer/custom/new-forward.cc m1.o ece408net.o src/network.o src/mnist.o src/layer/*.o src/loss/*.o src/layer/custom/*.o $(INCFLAGS) $(LDFLAGS) -o m1
 
 # debug:	debug_m2
@@ -72,8 +72,8 @@ loss.sentinel:           src/loss/cross_entropy_loss.cc src/loss/mse_loss.cc
 		$(CC) $(CFLAGS) -c src/loss/mse_loss.cc -o src/loss/new-mse_loss.o $(INCFLAGS)
 		touch loss.sentinel
 
-../helper_lib/helper_lib.a: 
-	cd ../helper_lib; make
+../../helper_lib/helper_lib.a: 
+	cd ../../helper_lib; make
 
 
 clean:
@@ -81,7 +81,7 @@ clean:
 		rm *.sentinel
 		rm m2 || true
 		rm m1 || true
-		cd ../helper_lib; make clean
+		cd ../../helper_lib; make clean
 
 cpu:		m1
 		./m1 1000
